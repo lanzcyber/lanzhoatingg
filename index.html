@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -139,7 +140,7 @@
 
   <!-- Video Background -->
   <video class="bg-video" autoplay muted loop playsinline>
-    <source src="https://files.catbox.moe/7una7q.mp4" type="video/mp4">
+    <source src="bg.mp4" type="video/mp4">
   </video>
 
   <div class="container">
@@ -192,10 +193,14 @@
       document.getElementById('popupDana').style.display = 'none';
     }
     function copyDana() {
-      const danaNumber = document.getElementById("danaNumber").innerText;
-      navigator.clipboard.writeText(danaNumber).then(() => {
-        alert("Nomor DANA disalin: " + danaNumber);
-      });
+      const danaNumber = document.getElementById("danaNumber");
+      const textArea = document.createElement("textarea");
+      textArea.value = danaNumber.textContent;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      alert("Nomor DANA disalin: " + danaNumber.textContent);
     }
     function downloadImage() {
       const url = "https://files.catbox.moe/gzvdou.jpg";
